@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#121212"><meta name="description" content="Une exploration interactive de l'histoire de l'AK et de son héritage industriel et culturel."><title>AK / Archive — Une silhouette. Une histoire.</title>
+<link rel="stylesheet" href="./src/style.css">
+<link rel="stylesheet" href="./src/story.css">
+</head>
+<body>
+<a class="skip" href="#histoire">Aller à l’histoire</a>
+<header><a class="logo" href="#accueil" aria-label="AK Archive accueil">AK<span>/</span><small>ARCHIVE</small></a><nav aria-label="Navigation principale"><a href="#accueil">L’objet</a><a href="#histoire">L’histoire</a><a href="#apropos">Le projet</a></nav><button id="account" class="account">Mon espace <span>↗</span></button></header>
+<main>
+<section id="accueil" class="hero">
+  <div class="eyebrow hero-eyebrow"><i></i> ARCHIVES INTERACTIVES / OBJET N° 001</div>
+  <div class="hero-heading"><h1>AK<span>—</span>47</h1><div class="hero-editorial"><span>UNE SILHOUETTE.<br>UN SIÈCLE D’HISTOIRE.</span><p>Une exploration de l’objet,<br>de ses origines et de son empreinte.</p></div></div>
+  <div class="stage" id="stage"><div class="giant" aria-hidden="true">1947</div><div id="viewer" role="img" aria-label="Modèle 3D détaillé d’un AK-47, bois et métal texturés, manipulable avec les commandes ci-dessous"></div><div class="stage-mark mark-left" aria-hidden="true">+</div><div class="stage-mark mark-right" aria-hidden="true">+</div></div>
+  <div class="hero-bottom"><a class="button primary" href="#histoire">Entrer dans l’histoire <span>↘</span></a><div class="object-controls"><span id="model-status" role="status">CHARGEMENT DE L’OBJET…</span><div class="viewer-tools" aria-label="Commandes du modèle"><button id="rotate-left" aria-label="Tourner à gauche">↶</button><button id="rotate-right" aria-label="Tourner à droite">↷</button><button id="zoom-in" aria-label="Zoom avant">+</button><button id="zoom-out" aria-label="Zoom arrière">−</button><button id="reset" aria-label="Réinitialiser la vue">Réinitialiser</button></div></div></div>
+  <div class="hero-meta"><span>01 / L’OBJET</span><span>GLISSEZ POUR EXPLORER À 360°</span><a href="#histoire">L’HISTOIRE CONTINUE ↓</a></div>
+</section>
+<section id="histoire" class="history" aria-labelledby="history-title">
+  <div class="section-intro history-intro">
+    <div><p class="eyebrow">02 / LE TEMPS EN MOUVEMENT</p><h2 id="history-title">Le temps.<br><span>Entre vos mains.</span></h2></div>
+    <div class="history-instructions"><p>De 1947 à aujourd’hui.<br>Un geste pour traverser les époques.</p><span class="scroll-cue"><span class="mouse-outline" aria-hidden="true"></span> MOLETTE, PAVÉ TACTILE OU BALAYAGE ↓</span></div>
+  </div>
+  
+  <div class="story-layout">
+    <div class="story-media">
+<nav class="timeline-nav" aria-label="Étapes historiques">
+    <a href="#year-1947" class="active" aria-current="step"><span>01</span>1947</a>
+<a href="#year-1949" ><span>02</span>1949</a>
+<a href="#year-1959" ><span>03</span>1959</a>
+<a href="#year-1974" ><span>04</span>1974</a>
+<a href="#year-today" ><span>05</span>Aujourd’hui</a>
+    <div class="timeline-progress" aria-hidden="true"><span></span></div>
+  </nav>
+      <div class="film-topline"><span><i></i> AK / ARCHIVE</span><span>ÉTUDE EN MOUVEMENT</span></div>
+      <div class="film-year" aria-hidden="true">1947</div><a class="film-exit" href="#apropos" aria-label="Passer la chronologie">Passer l’histoire ↗</a>
+      <div class="film-plane"><canvas id="film-canvas" aria-label="Séquence cinématographique de l’AK synchronisée au défilement"></canvas>
+        <img class="film-poster" src="/images/frame-01.webp" width="1200" height="675" alt="Silhouette d’un AK sur fond noir, création visuelle Firefly">
+        <video id="history-video" muted playsinline preload="none" poster="/images/frame-01.webp" aria-label="Animation créative d’un AK, synchronisée avec le défilement"><source src="/media/ak47-fall.mp4" type="video/mp4"></video>
+      </div>
+      <span class="film-cross cross-left" aria-hidden="true">+</span><span class="film-cross cross-right" aria-hidden="true">+</span>
+      <div class="film-caption"><span id="film-era">LES ORIGINES</span><span id="film-count">01 / 05</span></div>
+      <div class="film-controls"><p id="film-status" role="status">Défilez pour faire avancer le film</p><button id="motion-toggle" type="button" aria-pressed="false">Figer le film <span aria-hidden="true">Ⅱ</span></button></div>
+      <div class="film-meter" aria-hidden="true"><span></span></div>
+      <p class="film-credit">CRÉATION VISUELLE FIREFLY · ILLUSTRATION NON DOCUMENTAIRE</p>
+    </div>
+    <div class="chapters"><article id="year-1947" class="chapter" data-year="1947" data-era="LES ORIGINES"><div class="chapter-body"><div class="year">1947<span>01 / CONCEPTION</span></div><h3>La naissance d’une silhouette.</h3><p>Dans l’après-guerre soviétique, Mikhaïl Kalachnikov et son équipe développent le prototype qui donnera son nom à l’AK-47. Il s’inscrit dans une recherche collective visant à renouveler l’équipement de l’infanterie. L’année 1947 marque une étape de conception, distincte de l’adoption militaire.</p><span class="tag">PROTOTYPE · APRÈS-GUERRE</span></div></article>
+<article id="year-1949" class="chapter" data-year="1949" data-era="DE L’IDÉE À LA SÉRIE"><div class="chapter-body"><div class="year">1949<span>02 / ADOPTION</span></div><h3>Du prototype à la série.</h3><p>L’AK entre officiellement en service dans les forces soviétiques en 1949. Ses premières années sont aussi celles d’ajustements industriels : les méthodes de fabrication évoluent, donnant naissance à plusieurs versions du boîtier. Derrière sa silhouette familière se trouve une histoire de production et de standardisation.</p><span class="tag">ADOPTION · INDUSTRIALISATION</span></div></article>
+<article id="year-1959" class="chapter" data-year="1959" data-era="UNE FORME QUI ÉVOLUE"><div class="chapter-body"><div class="year">1959<span>03 / ÉVOLUTION</span></div><h3>Une nouvelle génération : l’AKM.</h3><p>L’AKM, version modernisée, est introduit en 1959. Son boîtier en tôle emboutie participe à l’allègement de l’ensemble et à une fabrication plus adaptée à la grande série. Souvent confondu avec l’AK-47 dans l’imaginaire populaire, il constitue pourtant une variante historique distincte.</p><span class="tag">AKM · MODERNISATION</span></div></article>
+<article id="year-1974" class="chapter" data-year="1974" data-era="UNE NOUVELLE GÉNÉRATION"><div class="chapter-body"><div class="year">1974<span>04 / DIVERSIFICATION</span></div><h3>La famille s’élargit.</h3><p>L’AK-74 ouvre une nouvelle branche de la famille, avec un calibre différent et des évolutions de conception. Le nom « AK-47 » devient progressivement, dans les médias et la culture populaire, un raccourci pour des armes qui appartiennent en réalité à plusieurs générations.</p><span class="tag">AK-74 · NOUVELLE BRANCHE</span></div></article>
+<article id="year-today" class="chapter" data-year="Aujourd’hui" data-era="L’EMPREINTE DU TEMPS"><div class="chapter-body"><div class="year today">Aujourd’hui<span>05 / HÉRITAGE</span></div><h3>Comprendre ce que l’objet représente.</h3><p>Produite, adaptée et représentée dans de nombreux pays, la famille AK dépasse son origine industrielle. Elle apparaît dans les images de conflits, les emblèmes et les œuvres culturelles. Étudier cet objet implique aussi d’interroger sa diffusion et les conséquences humaines de la violence armée.</p><span class="tag">MÉMOIRE · CULTURE · SOCIÉTÉ</span></div></article></div>
+  </div>
+  <div class="archive-gallery"><div class="gallery-heading"><p class="eyebrow">ARRÊTS SUR IMAGE</p><h2>La matière.<br>Le mouvement.</h2><span>FIREFLY / ÉTUDE VISUELLE</span></div><div class="gallery-grid"><figure class="chapter-image ">
+    <a href="./images/frame-01.webp" class="image-zoom" aria-label="Agrandir l’illustration du chapitre 1947"><img src="/images/frame-01.webp" width="1200" height="675" loading="lazy" decoding="async" alt="Silhouette créative d’un AK sur fond noir, extrait de la vidéo Firefly ; illustration sans identification de variante historique"><span class="image-expand" aria-hidden="true">↗</span></a>
+    <figcaption><span>ÉTUDE 01 — LA SILHOUETTE</span><span>FIREFLY / ILLUSTRATION</span></figcaption>
+  </figure>
+<figure class="chapter-image image-detail">
+    <a href="./images/frame-03.webp" class="image-zoom" aria-label="Agrandir l’illustration du chapitre 1949"><img src="/images/frame-03.webp" width="1200" height="675" loading="lazy" decoding="async" alt="Silhouette créative d’un AK sur fond noir, extrait de la vidéo Firefly ; illustration sans identification de variante historique"><span class="image-expand" aria-hidden="true">↗</span></a>
+    <figcaption><span>ÉTUDE 02 — LES MATIÈRES</span><span>FIREFLY / ILLUSTRATION</span></figcaption>
+  </figure>
+<figure class="chapter-image ">
+    <a href="./images/frame-05.webp" class="image-zoom" aria-label="Agrandir l’illustration du chapitre 1959"><img src="/images/frame-05.webp" width="1200" height="675" loading="lazy" decoding="async" alt="Silhouette créative d’un AK sur fond noir, extrait de la vidéo Firefly ; illustration sans identification de variante historique"><span class="image-expand" aria-hidden="true">↗</span></a>
+    <figcaption><span>ÉTUDE 03 — LES LIGNES</span><span>FIREFLY / ILLUSTRATION</span></figcaption>
+  </figure>
+<figure class="chapter-image image-detail detail-front">
+    <a href="./images/frame-07.webp" class="image-zoom" aria-label="Agrandir l’illustration du chapitre 1974"><img src="/images/frame-07.webp" width="1200" height="675" loading="lazy" decoding="async" alt="Silhouette créative d’un AK sur fond noir, extrait de la vidéo Firefly ; illustration sans identification de variante historique"><span class="image-expand" aria-hidden="true">↗</span></a>
+    <figcaption><span>ÉTUDE 04 — LES REFLETS</span><span>FIREFLY / ILLUSTRATION</span></figcaption>
+  </figure>
+<figure class="chapter-image ">
+    <a href="./images/frame-09.webp" class="image-zoom" aria-label="Agrandir l’illustration du chapitre Aujourd’hui"><img src="/images/frame-09.webp" width="1200" height="675" loading="lazy" decoding="async" alt="Silhouette créative d’un AK sur fond noir, extrait de la vidéo Firefly ; illustration sans identification de variante historique"><span class="image-expand" aria-hidden="true">↗</span></a>
+    <figcaption><span>ÉTUDE 05 — L’EMPREINTE</span><span>FIREFLY / ILLUSTRATION</span></figcaption>
+  </figure></div></div><div class="history-outro"><p>Un objet traverse le temps.<br><span>Son histoire continue de s’écrire.</span></p><div class="sources">Pour aller plus loin : <a href="https://armamentresearch.com/wp-content/uploads/2014/12/ARES-Research-Note-No.-6-Introduction-to-Basic-AK-Type-Rifle-Identification.pdf" target="_blank" rel="noopener noreferrer">ARES — Introduction to AK-type rifle identification ↗</a> · <a href="https://www.smallarmssurvey.org/sites/default/files/resources/SAS-WP25-Self-loading-rifles.pdf" target="_blank" rel="noopener noreferrer">Small Arms Survey ↗</a><br>La vidéo et les images sont des illustrations créatives Firefly fournies pour ce projet. Elles ne documentent pas les variantes historiques.</div></div>
+</section>
+<section id="apropos" class="about"><p class="eyebrow">03 / LE PROJET</p><div class="section-intro"><h2>Regarder autrement.<br>Comprendre davantage.</h2><p>AK / Archive est un prototype éditorial indépendant. Nous associons histoire, design et exploration numérique pour replacer un objet emblématique dans son contexte.</p></div><div class="team"><article><div class="portrait"><span>01 / RECHERCHE</span><img src="/images/frame-03.webp" width="1200" height="675" loading="lazy" alt="Étude visuelle de la silhouette et de ses matériaux"></div><h3>Recherche historique</h3><p>Documenter les origines, croiser les sources et distinguer les générations.</p></article><article><div class="portrait"><span>02 / DIRECTION ARTISTIQUE</span><img src="/images/frame-05.webp" width="1200" height="675" loading="lazy" alt="Jeu de lumières sur les surfaces en bois et métal"></div><h3>Direction artistique</h3><p>Créer une lecture sobre, sensible et attentive aux détails.</p></article><article><div class="portrait"><span>03 / EXPLORATION</span><img src="/images/frame-07.webp" width="1200" height="675" loading="lazy" alt="Silhouette en perspective dans un espace sombre"></div><h3>Expérience numérique</h3><p>Rendre l’archive accessible grâce à une exploration interactive.</p></article></div><p class="placeholder-note">Modèle 3D : <a href="https://stein-indie.itch.io/classic-weapons-pack" target="_blank" rel="noopener noreferrer">Stein Games</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0</a>. Vidéo et études visuelles : création Firefly fournie pour ce projet.</p></section>
+</main><footer><a class="logo" href="#accueil">AK<span>/</span><small>ARCHIVE</small></a><p>Une silhouette. Une histoire.</p><span>PROJET ÉDITORIAL / 2026</span></footer>
+<button id="sound" class="sound" aria-pressed="false"><span class="sound-icon">▂ ▅ ▃ ▆</span><span id="sound-label">Activer le son</span></button>
+<dialog id="image-dialog" class="image-dialog" aria-labelledby="image-title"><div class="dialog-top"><span id="image-title" class="eyebrow">ARRÊT SUR IMAGE</span><button type="button" id="close-image" aria-label="Fermer l’image">×</button></div><img id="expanded-image" alt=""><p>Création visuelle Firefly · extrait de la vidéo du projet</p></dialog>
+<dialog id="profile-dialog"><form id="profile-form"><div class="dialog-top"><span class="eyebrow">VOTRE ESPACE</span><button type="button" id="close-dialog" aria-label="Fermer">×</button></div><h2 id="profile-title">Bienvenue<br>dans l’archive.</h2><p class="dialog-note">Profil de démonstration enregistré uniquement dans ce navigateur.</p><div class="avatar" id="avatar-preview">A</div><label for="nickname">Votre pseudo</label><input id="nickname" name="nickname" maxlength="24" minlength="2" required autocomplete="nickname" placeholder="Ex. Alex"><label for="photo">Photo de profil <small>(JPEG, PNG ou WebP · 2 Mo maximum)</small></label><input id="photo" type="file" accept="image/jpeg,image/png,image/webp"><p id="profile-error" role="alert"></p><button class="button primary" type="submit">Enregistrer mon profil <span>↗</span></button><button id="logout" type="button" hidden>Se déconnecter</button></form></dialog>
+<script type="module" src="./src/bootstrap.js"></script>
+</body></html>

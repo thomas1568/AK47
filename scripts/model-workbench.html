@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Asset conversion</title></head><body>
+<script type="module">
+import * as THREE from 'three';
+import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
+import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
+
+window.convertModel = async () => {
+  const manager = new THREE.LoadingManager();
+  // FBX material links are replaced with explicit local PBR maps below.
+  manager.setURLModifier(url => /\.(png|tga|jpg)$/i.test(url) ? '/asset-sources/ak47/' + url.split(/[\\/]/).pop() : url);
+  const object = await new FBXLoader(manager).loadAsync('/asset-sources/ak47/SKM_AK47.fbx');
+  const textureLoader = new THREE.TextureLoader();
+  const [color, normal, sourceORM] = await Promise.all(['C','N','RMAO'].map(suffix => textureLoader.loadAsync(`/asset-sources/ak47/T_AK47_${suffix}.png`)));
+  color.colorSpace = THREE.SRGBColorSpace;
+  const ormCanvas = document.createElement('canvas');
+  ormCanvas.width = ormCanvas.height = 1024;
+  const ctx = ormCanvas.getContext('2d', { willReadFrequently: true });
+  ctx.drawImage(sourceORM.image, 0, 0, 1024, 1024);
+  const data = ctx.getImageData(0, 0, 1024, 1024);
+  for (let i = 0; i < data.data.length; i += 4) {
+    const rough = data.data[i], metal = data.data[i+1], ao = data.data[i+2];
+    data.data[i] = ao; data.data[i+1] = rough; data.data[i+2] = metal;
+  }
+  ctx.putImageData(data, 0, 0);
+  const orm = new THREE.CanvasTexture(ormCanvas);
+  // This asset uses tiled UV coordinates beyond [0,1]. Preserve its wrap mode.
+  for (const texture of [color, normal, orm]) texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  const material = new THREE.MeshStandardMaterial({ name: 'Stein Games / AK47 PBR', map: color, normalMap: normal, roughnessMap: orm, metalnessMap: orm, aoMap: orm, roughness: 1, metalness: 1, normalScale: new THREE.Vector2(1,-1) });
+  const bounds = new THREE.Box3().setFromObject(object);
+  const meshes = [];
+  object.traverse(node => { if(node.isMesh) { node.material = material; meshes.push({ name: node.name, vertices: node.geometry.attributes.position.count, bounds: new THREE.Box3().setFromObject(node).getSize(new THREE.Vector3()).toArray() }); }});
+  const result = await new GLTFExporter().parseAsync(object, { binary: true, onlyVisible: true, maxTextureSize: 2048, animations: [] });
+  const blob = new Blob([result]);
+  const base64 = await new Promise(resolve => { const reader = new FileReader(); reader.onload = () => resolve(reader.result.split(',')[1]); reader.readAsDataURL(blob); });
+  return { base64, bytes: result.byteLength, size: bounds.getSize(new THREE.Vector3()).toArray(), meshes };
+};
+</script></body></html>
